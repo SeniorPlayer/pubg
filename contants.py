@@ -2,6 +2,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 class c_contants():
+    #程序退出标记
     exitFlag = False
     pool = ThreadPoolExecutor()
     guns = {

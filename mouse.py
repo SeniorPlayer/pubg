@@ -3,7 +3,7 @@ import time
 import pydirectinput
 
 from contants import c_contants
-
+from equipment import getCurrentWepone
 pydirectinput.PAUSE = 0
 
 
@@ -12,17 +12,21 @@ def changeOpen():
 
 
 def moveMouse():
-    gun = c_contants.guns_3[c_mouse.repairName]
+    curWepone = getCurrentWepone()
+    if(curWepone.name == 'none'):
+        return
+    gun = c_contants.guns_3[curWepone.name]
     basic = gun['basic']
     speed = gun['speed']
+    full = gun['full']
     print("curent" + str(basic))
     for i in range(14):
-        if not c_mouse.leftPressed:
+        if not c_mouse.leftPressed or c_contants.exitFlag:
             break
         for j in range(speed):
-            if not c_mouse.leftPressed:
+            if not c_mouse.leftPressed or c_contants.exitFlag:
                 break
-            pydirectinput.move(xOffset=0, yOffset=int(round(basic[i]*0.65, 0)), relative=True)
+            pydirectinput.move(xOffset=0, yOffset=int(round(basic[i]*full, 0)), relative=True)
             time.sleep(0.03)
 
 def handlePressed():
@@ -39,10 +43,12 @@ def onClick(x, y, button, pressed):
         handlePressed()
     return not c_contants.exitFlag
 
+#按下f1测试程序生效
+def testMouse():
+    pydirectinput.moveRel(xOffset=0, yOffset=50, duration = 1)
 
 class c_mouse():
     leftPressed = False
     openFlag = False
-    repairName = 'none'
     def __init__(self):
         pass

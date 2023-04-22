@@ -1,7 +1,6 @@
 import threading
 
 import cv2
-import numpy
 import numpy as np
 import pynput.keyboard as keyboard
 from pynput import mouse
@@ -38,13 +37,10 @@ def isArm(x, y, w, h):
         return True
     return False
 
-def setCurrentWepone(name):
-    print("setCurrentWepone:" + str(name))
-    c_mouse.repairName = name
 
 def check():
     c_equipment.checkFlag = True
-    time.sleep(0.5)
+    time.sleep(0.3)
     test = isArm(485, 75, 100, 50)
     print("test res:" + str(test))
     if test:
@@ -63,15 +59,21 @@ def asyncHandle():
 def onRelease(key):
     try:
         if '1' == key.char:
-            setCurrentWepone(c_equipment.wepone1.name)
-        if '2' == key.char:
-            setCurrentWepone(c_equipment.wepone2.name)
+            c_equipment.switch = 1
+        elif '2' == key.char:
+            c_equipment.switch = 2
+        elif '3' == key.char:#手枪
+            c_equipment.switch = 3
+        elif '4' == key.char:#刀具
+            c_equipment.switch = 3
+        elif '5' == key.char:#手雷
+            c_equipment.switch = 3
         print("key char" + str(key.char))
     except AttributeError:
         if 'tab' == key.name:
             asyncHandle()
         elif 'f12' == key.name:
-            c_contants.exitFlag = True
+            testMouse()
         elif 'num_lock' == key.name:
             changeOpen()
         print("key name" + str(key.name))
