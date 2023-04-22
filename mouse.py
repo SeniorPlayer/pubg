@@ -45,7 +45,10 @@ def onClick(x, y, button, pressed):
 
 #按下f1测试程序生效
 def testMouse():
-    pydirectinput.moveRel(xOffset=0, yOffset=50, duration = 1)
+    if c_mouse.openFlag:
+        for i in range(10):
+            pydirectinput.moveRel(xOffset=0, yOffset=10)
+            time.sleep(0.1)
 
 class c_mouse():
     leftPressed = False
