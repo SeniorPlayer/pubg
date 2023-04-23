@@ -29,15 +29,39 @@ def moveMouse():
             pydirectinput.move(xOffset=0, yOffset=int(round(basic[i]*full, 0)), relative=True)
             time.sleep(0.03)
 
-def handlePressed():
-    if not c_mouse.leftPressed or not c_mouse.openFlag:
+def moveMouse1():
+    curWepone = getCurrentWepone()
+    if(curWepone.name == 'none'):
         return
-    c_contants.pool.submit(moveMouse)
+    gun = c_contants.guns[curWepone.name]
+    basic = gun['basic']
+    speed = gun['speed']
+    startTime = round(time.perf_counter(), 3) * 1000
+    for i in range(curWepone.bulletCount):
+        if not canFire():
+            break
+        moveSum = basic[i]
+        while True:
+            if(moveSum > 10):
+                pydirectinput.move(xOffset=0, yOffset=10, relative=True)
+                moveSum -= 10
+            elif(moveSum > 0):
+                pydirectinput.move(xOffset=0, yOffset=moveSum, relative=True)
+                moveSum = 0
+            elapsed = (round(time.perf_counter(), 3) * 1000 - startTime)
+            if not canFire() or elapsed > (i+1)*speed + 10:
+                break
+            time.sleep(0.01)
+
+
+def handlePressed():
+    if not canFire():
+        return
+    c_contants.pool.submit(moveMouse1)
 
 
 # 鼠标点击事件
 def onClick(x, y, button, pressed):
-    print(button.name)
     if 'left' == button.name:
         c_mouse.leftPressed = pressed
         handlePressed()
@@ -49,6 +73,10 @@ def testMouse():
         for i in range(10):
             pydirectinput.moveRel(xOffset=0, yOffset=10)
             time.sleep(0.1)
+
+# 是否可以开火
+def canFire():
+    return c_mouse.leftPressed and c_mouse.openFlag and not c_contants.exitFlag
 
 class c_mouse():
     leftPressed = False

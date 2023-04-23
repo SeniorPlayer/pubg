@@ -22,6 +22,6 @@ def shotCut(x, y, w, h):
 
 
 def shotCutTest():
-    img = cv2.imread(r'./resource/shotcut/screenall.bmp', 0)
-    thresh, result = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
-    return img
+    img = cv2.imread(r'./resource/shotcut/screen.bmp', 0)
+    temp = adaptive_binarization(img)
+    return temp

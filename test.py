@@ -1,3 +1,5 @@
+import os
+
 import cv2
 import numpy as np
 import pydirectinput
@@ -5,7 +7,7 @@ import pydirectinput
 from Screen import shotCut,shotCutTest
 import time
 import pyautogui
-
+from contants import c_contants
 
 wepone1 = 'none'
 wepone2 = 'none'
@@ -50,17 +52,25 @@ if __name__ == '__main__':
     # res = cv2.matchTemplate(img2, temp, cv2.TM_CCOEFF_NORMED)
     # loc = np.where(res > 0.9)
     # print(loc)
-    a = [30, 23, 24, 23, 33, 34, 34, 34, 40, 40, 40, 40, 41, 41, 41, 42, 46, 46, 46, 46, 46, 46, 46, 46,
-         46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 57, 58, 57, 58]
-    print(len(a))
-    num = 0
-    sum = 0
-    res = []
-    for i in range(40):
-        if num == 3:
-            res.append(sum/10)
-            num = 0
-            sum = 0
-        num += 1
-        sum += a[i]
-    print(res)
+    # a = [30, 23, 24, 23, 33, 34, 34, 34, 40, 40, 40, 40, 41, 41, 41, 42, 46, 46, 46, 46, 46, 46, 46, 46,
+    #      46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 57, 58, 57, 58]
+    # print(len(a))
+    # num = 0
+    # sum = 0
+    # res = []
+    # for i in range(40):
+    #     if num == 3:
+    #         res.append(sum/10)
+    #         num = 0
+    #         sum = 0
+    #     num += 1
+    #     sum += a[i]
+    # print(res)
+    for filename in os.listdir("./resource/buqiang/"):
+        print(filename)
+        if filename == 'akm.bmp' or filename == 'm416.bmp':
+            continue
+        file = "./resource/buqiang/" + filename
+        im = cv2.imread("./resource/buqiang/" + filename, 0)
+        cv2.imwrite("./resource/aa/" + filename, im[8:42, 55:140])
+        time.sleep(0.1)

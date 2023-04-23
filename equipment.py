@@ -8,8 +8,10 @@ def getCurrentWepone():
     else:
         return c_equipment.none
 
+
 # 装备栏
 class c_equipment():
+    #是否打开装备栏
     checkFlag = False
     #装备1
     wepone1 = c_wepone()

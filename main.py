@@ -10,9 +10,13 @@ from equipment import c_equipment
 from mouse import *
 from contants import  c_contants
 
+#1，2选择武器
+#num_lock开启关闭
+#f12测试
+#
 
 def initWepone(x, y, w, h):
-    weponeBmps = ["./resource/akm.bmp", './resource/m416.bmp']
+    weponeBmps = ["./resource/guns/akm.bmp", './resource/guns/m416.bmp']
     weponeNames = ["akm", "m416"]
     im = shotCut(x, y, w, h)
     index = 0
@@ -29,7 +33,7 @@ def initWepone(x, y, w, h):
 
 def isArm(x, y, w, h):
     screen = shotCut(x, y, w, h)
-    curWepone = cv2.imread("./resource/test.bmp", 0)
+    curWepone = cv2.imread("./resource/bag.bmp", 0)
     temp = adaptive_binarization(curWepone)
     res = cv2.matchTemplate(screen, temp, cv2.TM_CCOEFF_NORMED)
     loc = np.where(res > 0.8)
