@@ -66,11 +66,12 @@ if __name__ == '__main__':
     #     num += 1
     #     sum += a[i]
     # print(res)
-    for filename in os.listdir("./resource/buqiang/"):
+    dir = "./resource/woba/"
+    for filename in os.listdir(dir):
         print(filename)
-        if filename == 'akm.bmp' or filename == 'm416.bmp':
-            continue
-        file = "./resource/buqiang/" + filename
-        im = cv2.imread("./resource/buqiang/" + filename, 0)
-        cv2.imwrite("./resource/aa/" + filename, im[8:42, 55:140])
+        im = cv2.imread(dir + filename, 0)
+        # cv2.imshow("test", im[220:265, 145:200])
+        # cv2.waitKey(0)
+        # break
+        cv2.imwrite("./resource/aa/" + filename, im[220:265, 145:200])
         time.sleep(0.1)
