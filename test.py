@@ -41,6 +41,7 @@ def adaptive_binarization(img):
     C = 5
     img2 = cv2.adaptiveThreshold(img, maxval, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, blockSize, C)
     return img2
+from equipment import compareAndGetName
 
 if __name__ == '__main__':
     # im = shotCutTest()
@@ -66,12 +67,11 @@ if __name__ == '__main__':
     #     num += 1
     #     sum += a[i]
     # print(res)
-    dir = "./resource/woba/"
-    for filename in os.listdir(dir):
-        print(filename)
-        im = cv2.imread(dir + filename, 0)
-        # cv2.imshow("test", im[220:265, 145:200])
-        # cv2.waitKey(0)
-        # break
-        cv2.imwrite("./resource/aa/" + filename, im[220:265, 145:200])
-        time.sleep(0.1)
+    # time.sleep(2)
+    # temp = shotCut(1770, 120, 650, 590)
+    # cv2.imwrite("test.bmp", temp)
+    t1 = round(time.perf_counter(), 3)*1000
+    screen = cv2.imread(r'./resource/shotcut/screen.bmp', 0)
+    cv2.imshow("test", screen[500:585, 560:640])
+    cv2.waitKey(0)
+    print(round(time.perf_counter(), 3)*1000 - t1)

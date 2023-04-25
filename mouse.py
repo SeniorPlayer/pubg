@@ -33,25 +33,27 @@ def moveMouse1():
     curWepone = getCurrentWepone()
     if(curWepone.name == 'none'):
         return
-    gun = c_contants.guns[curWepone.name]
-    basic = gun['basic']
-    speed = gun['speed']
+    basic = curWepone['basic']
+    speed = curWepone['speed']
     startTime = round(time.perf_counter(), 3) * 1000
-    for i in range(curWepone.bulletCount):
-        if not canFire():
-            break
-        moveSum = basic[i]
-        while True:
-            if(moveSum > 10):
-                pydirectinput.move(xOffset=0, yOffset=10, relative=True)
-                moveSum -= 10
-            elif(moveSum > 0):
-                pydirectinput.move(xOffset=0, yOffset=moveSum, relative=True)
-                moveSum = 0
-            elapsed = (round(time.perf_counter(), 3) * 1000 - startTime)
-            if not canFire() or elapsed > (i+1)*speed + 10:
+    if curWepone.model == 'auto':
+        for i in range(curWepone.maxBullets):
+            if not canFire():
                 break
-            time.sleep(0.01)
+            moveSum = int(round(basic[i] * curWepone.k, 2))
+            while True:
+                if(moveSum > 10):
+                    pydirectinput.move(xOffset=0, yOffset=10, relative=True)
+                    moveSum -= 10
+                elif(moveSum > 0):
+                    pydirectinput.move(xOffset=0, yOffset=moveSum, relative=True)
+                    moveSum = 0
+                elapsed = (round(time.perf_counter(), 3) * 1000 - startTime)
+                if not canFire() or elapsed > (i+1)*speed + 10:
+                    break
+                time.sleep(0.01)
+    else:
+        print()
 
 
 def handlePressed():
