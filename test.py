@@ -37,11 +37,11 @@ pydirectinput.PAUSE = 0
 def adaptive_binarization(img):
     #自适应二值化
     maxval = 255
-    blockSize = 5
+    blockSize = 3
     C = 5
     img2 = cv2.adaptiveThreshold(img, maxval, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, blockSize, C)
     return img2
-from equipment import compareAndGetName
+from equipment import compareAndGetName,calculate_ssim
 
 if __name__ == '__main__':
     # im = shotCutTest()
@@ -68,10 +68,29 @@ if __name__ == '__main__':
     #     sum += a[i]
     # print(res)
     # time.sleep(2)
-    # temp = shotCut(1770, 120, 650, 590)
-    # cv2.imwrite("test.bmp", temp)
+    # temp = shotCut(946, 1320, 42, 46)
+    # cv2.imwrite("line.bmp", temp)
+    # dir = "./resource/screen/"
+    # files = os.listdir(dir)
+    # for name in files:
+    #     im = cv2.imread(dir + name, 0)
+    #     cv2.imwrite("./resource/aa/" + name, im[40:70, 365:425])
+    # t1 = round(time.perf_counter(), 3)*1000
+    #screen = cv2.imread('./test1.bmp', 0)
+    # cv2.imshow("test", screen[30:100, 365:425])
+    # cv2.imshow("test1", screen[330:400, 365:425])
+    # cv2.waitKey(0)
+    #m2Name = compareAndGetName(screen[30:100, 365:425], "./resource/mirrors/")
+    #print(m2Name)
+    #print(round(time.perf_counter(), 3)*1000 - t1)
+
+    # t1 = round(time.perf_counter(), 3)*1000
+    # res = compare2pic('./resource/screen/x4.bmp', "./resource/mirrors/x4.bmp" , 6)
+    # print(res)
+    # print(round(time.perf_counter(), 3)*1000 - t1)
     t1 = round(time.perf_counter(), 3)*1000
-    screen = cv2.imread(r'./resource/shotcut/screen.bmp', 0)
-    cv2.imshow("test", screen[500:585, 560:640])
-    cv2.waitKey(0)
+    bag = cv2.imread("./resource/bag.bmp", 0)
+    bag1 = cv2.imread("./resource/bag.bmp", 0)
+    res = calculate_ssim(np.asarray(bag1), np.asarray(bag))
+    print(res)
     print(round(time.perf_counter(), 3)*1000 - t1)

@@ -3,7 +3,9 @@ from concurrent.futures import ThreadPoolExecutor
 class c_contants():
     # 程序退出标记
     exitFlag = False
-    pool = ThreadPoolExecutor()
+    bagOpen = False
+    hold = False
+    pool = ThreadPoolExecutor(max_workers=10)
     guns = {
         "none": {
             "speed": 100,
@@ -28,6 +30,7 @@ class c_contants():
                 "x2": 1.7,
                 "x3": 2.6,
                 "x4": 3.6,
+                "x4_1": 3.6,
                 "x6": 5.2
             },
             #枪口
@@ -59,6 +62,7 @@ class c_contants():
                 "x2": 1.7,
                 "x3": 2.6,
                 "x4": 3.6,
+                "x4_1": 3.6,
                 "x6": 5.2
             },
             #枪口
@@ -69,14 +73,13 @@ class c_contants():
                 "rifle_flame": 0.84,
             },
             "butt": {
-                "m4": 0.965
+                "m4": 0.965,
+                "m41": 0.965
             },
             #握把
             "grip": {
                 "half": 0.77,
-                "light": 0.77,
                 "thumb": 0.92,
-                "triangle": 1,
                 "vertical": 0.77
             },
             "speed": 86,

@@ -17,8 +17,7 @@ class c_wepone():
         self.parts = [mirror, muzzle, grip, butt]  # 配件列表
         self.k = 1.0  # 配件压枪系数,最后结果由各部分配件累乘得到
         self.interval = 0  # 每发射击间隔
-
-        self.single = False #是否单发
+        self.hold = 1.33
         if name != "none" and name != '':
             try:
                 gun_data = c_contants.guns[name]
@@ -29,6 +28,7 @@ class c_wepone():
                 self.posture_states.append(gun_data['posture']['default'])
                 self.posture_states.append(gun_data['posture']['squat'])
                 self.posture_states.append(gun_data['posture']['down'])
+                self.hold = gun_data['hold']
                 if mirror!= 'none' and mirror != '':
                     self.k *= gun_data['mirror'][mirror]
                 if muzzle != 'none' and muzzle != '':

@@ -38,11 +38,21 @@ def onRelease(key):
             testMouse()
         elif 'num_lock' == key.name:
             changeOpen()
+        elif 'shift' == key.name:
+            c_contants.hold = False
         print("key name" + str(key.name))
+
+def onPressed(key):
+    try:
+        if '1' == key.char:
+            pass
+    except AttributeError:
+        if 'shift' == key.name:
+            c_contants.hold = True
 
 # 监听键盘
 def listen_keybord():
-    listener = keyboard.Listener(on_release=onRelease)
+    listener = keyboard.Listener(on_press=onPressed, on_release=onRelease)
     listener.start()
 
 
