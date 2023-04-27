@@ -67,9 +67,9 @@ if __name__ == '__main__':
     #     num += 1
     #     sum += a[i]
     # print(res)
-    # time.sleep(2)
-    # temp = shotCut(946, 1320, 42, 46)
-    # cv2.imwrite("line.bmp", temp)
+    time.sleep(2)
+    temp = shotCut(1825,432,80,40)
+    cv2.imwrite("m416.bmp", temp)
     # dir = "./resource/screen/"
     # files = os.listdir(dir)
     # for name in files:
@@ -89,8 +89,8 @@ if __name__ == '__main__':
     # print(res)
     # print(round(time.perf_counter(), 3)*1000 - t1)
     t1 = round(time.perf_counter(), 3)*1000
-    bag = cv2.imread("./resource/bag.bmp", 0)
-    bag1 = cv2.imread("./resource/bag.bmp", 0)
+    bag = cv2.imread("./resource/guns/m416.bmp", 0)
+    bag1 = cv2.imread("./m416.bmp", 0)
     res = calculate_ssim(np.asarray(bag1), np.asarray(bag))
     print(res)
     print(round(time.perf_counter(), 3)*1000 - t1)
