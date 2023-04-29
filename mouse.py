@@ -37,8 +37,26 @@ def moveMouse():
                     break
                 time.sleep(0.01)
     else:
-        print()
-
+        for i in range(curWepone.maxBullets):
+            if not canFire():
+                break
+            holdK = 1
+            if c_contants.hold:
+                holdK = curWepone.hold
+            moveSum = int(round(basic[i] * curWepone.k * holdK, 2))
+            i += 1
+            while True:
+                if(moveSum > 10):
+                    pydirectinput.move(xOffset=0, yOffset=10, relative=True)
+                    moveSum -= 10
+                elif(moveSum > 0):
+                    pydirectinput.move(xOffset=0, yOffset=moveSum, relative=True)
+                    moveSum = 0
+                elapsed = (round(time.perf_counter(), 3) * 1000 - startTime)
+                if not canFire() or elapsed > (i+1)*speed + 10:
+                    break
+                time.sleep(0.01)
+            pydirectinput.click()
 
 def handlePressed():
     if not canFire():

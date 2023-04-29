@@ -30,7 +30,7 @@ def onRelease(key):
             c_equipment.switch = 3
         elif '5' == key.char:#手雷
             c_equipment.switch = 3
-        print("key char" + str(key.char))
+        #print("key char" + str(key.char))
     except AttributeError:
         if 'tab' == key.name:
             asyncHandle()
@@ -40,7 +40,7 @@ def onRelease(key):
             changeOpen()
         elif 'shift' == key.name:
             c_contants.hold = False
-        print("key name" + str(key.name))
+        #print("key name" + str(key.name))
 
 def onPressed(key):
     try:

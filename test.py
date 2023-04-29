@@ -67,9 +67,9 @@ if __name__ == '__main__':
     #     num += 1
     #     sum += a[i]
     # print(res)
-    # time.sleep(2)
-    # temp = shotCut(1825,432,80,40)
-    # cv2.imwrite("m416.bmp", temp)
+    time.sleep(2)
+    temp = shotCut(1825, 125, 80, 40)
+    cv2.imwrite("m416.bmp", temp)
     # dir = "./resource/screen/"
     # files = os.listdir(dir)
     # for name in files:
@@ -88,9 +88,9 @@ if __name__ == '__main__':
     # res = compare2pic('./resource/screen/x4.bmp', "./resource/mirrors/x4.bmp" , 6)
     # print(res)
     # print(round(time.perf_counter(), 3)*1000 - t1)
-    t1 = round(time.perf_counter(), 3)*1000
-    bag = cv2.imread("./resource/muzzle/rifle/rifle_flame.bmp", 0)
-    bag1 = cv2.imread("./screenMuzzle2.bmp", 0)
-    res = calculate_ssim(np.asarray(bag1), np.asarray(bag))
-    print(res)
-    print(round(time.perf_counter(), 3)*1000 - t1)
+    # t1 = round(time.perf_counter(), 3)*1000
+    # bag = cv2.imread("./resource/muzzle/rifle/rifle_flame.bmp", 0)
+    # bag1 = cv2.imread("./resource/muzzle/rifle/rifle_flame.bmp", 0)
+    # res = cv2.compare_ssim(bag, bag1)
+    # print(res)
+    # print(round(time.perf_counter(), 3)*1000 - t1)
