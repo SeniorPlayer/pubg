@@ -76,8 +76,8 @@ def recognizeEquiment():
             print(type(e), '::', e)
     gun1 = c_wepone(w1Name, m1Name, muzzleName1, g1Name, butt1Name)
     gun2 = c_wepone(w2Name, m2Name, muzzleName2, g2Name, butt2Name)
-    print(w1Name, m1Name, muzzleName1, g1Name, butt1Name)
-    print(w2Name, m2Name, muzzleName2, g2Name, butt2Name)
+    #print(w1Name, m1Name, muzzleName1, g1Name, butt1Name)
+    #print(w2Name, m2Name, muzzleName2, g2Name, butt2Name)
     c_equipment.wepone1 = gun1
     c_equipment.wepone2 = gun2
 

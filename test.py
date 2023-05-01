@@ -69,7 +69,7 @@ if __name__ == '__main__':
     # print(res)
     time.sleep(2)
     temp = shotCut(1825, 125, 80, 40)
-    cv2.imwrite("m416.bmp", temp)
+    cv2.imwrite("mp9.bmp", temp)
     # dir = "./resource/screen/"
     # files = os.listdir(dir)
     # for name in files:

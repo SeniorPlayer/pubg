@@ -84,6 +84,6 @@ def canFire():
 
 class c_mouse():
     leftPressed = False
-    openFlag = False
+    openFlag = True
     def __init__(self):
         pass
