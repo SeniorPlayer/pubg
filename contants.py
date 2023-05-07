@@ -37,7 +37,7 @@ class c_contants():
             # 枪口
             "muzzle": {
                 # 补偿
-                "rifle_compensate": 0.84,
+                "rifle_compensate": 0.80,
                 # 消焰
                 "rifle_flame": 0.84,
             },
@@ -69,7 +69,7 @@ class c_contants():
             # 枪口
             "muzzle": {
                 # 补偿
-                "rifle_compensate": 0.84,
+                "rifle_compensate": 0.80,
                 # 消焰
                 "rifle_flame": 0.84,
             },
@@ -111,7 +111,7 @@ class c_contants():
             },
             # 枪口
             "muzzle": {
-                "rifle_compensate": 0.84,
+                "rifle_compensate": 0.80,
                 "rifle_flame": 0.84
             },
             "butt": {
@@ -123,7 +123,7 @@ class c_contants():
                 "thumb": 0.92,
                 "vertical": 0.77
             },
-            "speed": 86,
+            "speed": 90,
             "basic": [31, 26, 27, 26, 36, 37, 37, 37, 41, 41, 42, 42, 42, 42, 43, 43, 46, 46, 46, 46, 46, 49, 49, 49,
                       49, 49, 49, 49, 49, 49, 49, 49, 50, 50, 50, 50, 60, 60, 60, 60]
         },
@@ -150,7 +150,7 @@ class c_contants():
             },
             # 枪口
             "muzzle": {
-                "rifle_compensate": 0.86,
+                "rifle_compensate": 0.80,
                 "rifle_flame": 0.86,
             },
             # 握把
@@ -186,7 +186,7 @@ class c_contants():
             },
             # 枪口
             "muzzle": {
-                "rifle_compensate": 0.86,
+                "rifle_compensate": 0.80,
                 "rifle_flame": 0.86,
             },
             # 握把
@@ -195,9 +195,10 @@ class c_contants():
                 "thumb": 0.92,
                 "vertical": 0.8
             },
-            "speed": 86,
-            "basic": [25, 18, 19, 18, 27, 28, 27, 28, 27, 28, 27, 28, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33,
-                      32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 40, 41, 41, 41]
+            "speed": 80,#                                                 15
+            "basic": [39, 15, 19, 18, 32, 28, 27, 35, 37, 33, 39, 38, 43, 43, 43, 43, 47, 47, 47, 47, 47, 48, 48, 48,
+                      #               30                                      40
+                      48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 55, 55, 55, 55]
         },
         "g36c": {
             "type": "rifle",
@@ -222,7 +223,7 @@ class c_contants():
             },
             # 枪口
             "muzzle": {
-                "rifle_compensate": 0.84,
+                "rifle_compensate": 0.80,
                 "rifle_flame": 0.84,
             },
             # 握把
@@ -288,7 +289,7 @@ class c_contants():
             },
             # 枪口
             "muzzle": {
-                "rifle_compensate": 0.84,
+                "rifle_compensate": 0.80,
                 "rifle_flame": 0.84,
             },
             "speed": 43,
@@ -404,7 +405,7 @@ class c_contants():
             },
             # 枪口
             "muzzle": {
-                "rifle_compensate": 0.84,
+                "rifle_compensate": 0.80,
                 "rifle_flame": 0.84,
             },
             "speed": 92,
@@ -434,7 +435,7 @@ class c_contants():
             },
             # 枪口
             "muzzle": {
-                "rifle_compensate": 0.84,
+                "rifle_compensate": 0.80,
                 "rifle_flame": 0.84,
             },
             "grip": {

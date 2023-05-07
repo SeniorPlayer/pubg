@@ -12,6 +12,7 @@ def changeOpen():
 
 def moveMouse():
     curWepone = getCurrentWepone()
+    print(curWepone.k)
     if(curWepone.name == 'none'):
         return
     basic = curWepone.basic
@@ -21,7 +22,7 @@ def moveMouse():
         for i in range(curWepone.maxBullets):
             if not canFire():
                 break
-            holdK = 1
+            holdK = 1.0
             if c_contants.hold:
                 holdK = curWepone.hold
             moveSum = int(round(basic[i] * curWepone.k * holdK, 2))

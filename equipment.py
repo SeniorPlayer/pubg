@@ -17,11 +17,13 @@ def getCurrentWepone():
 def compareAndGetName(screenImg, dir):
     content = os.listdir(dir)
     name = 'none'
+    max = 0
     for fileName in content:
         curWepone = cv2.imread(dir + fileName, 0)
         res = calculate_ssim(numpy.asarray(screenImg), numpy.asarray(curWepone))
-        if res > 0.5:
-            return str(fileName)[:-4]
+        if max < res and res > 0.5:
+            max = res
+            name = str(fileName)[:-4]
     return name
 
 #识别装备
@@ -76,8 +78,8 @@ def recognizeEquiment():
             print(type(e), '::', e)
     gun1 = c_wepone(w1Name, m1Name, muzzleName1, g1Name, butt1Name)
     gun2 = c_wepone(w2Name, m2Name, muzzleName2, g2Name, butt2Name)
-    #print(w1Name, m1Name, muzzleName1, g1Name, butt1Name)
-    #print(w2Name, m2Name, muzzleName2, g2Name, butt2Name)
+    print(w1Name, m1Name, muzzleName1, g1Name, butt1Name)
+    print(w2Name, m2Name, muzzleName2, g2Name, butt2Name)
     c_equipment.wepone1 = gun1
     c_equipment.wepone2 = gun2
 
