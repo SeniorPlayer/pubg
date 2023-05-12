@@ -12,7 +12,6 @@ def changeOpen():
 
 def moveMouse():
     curWepone = getCurrentWepone()
-    print(curWepone.k)
     if(curWepone.name == 'none'):
         return
     basic = curWepone.basic

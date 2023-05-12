@@ -65,5 +65,3 @@ def listen_mouse():
 if __name__ == '__main__':
     listen_keybord()
     listen_mouse()
-    # test = isArm(485, 75, 100, 50)
-    # print(test)
