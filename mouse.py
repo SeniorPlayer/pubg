@@ -24,16 +24,19 @@ def moveMouse():
             holdK = 1.0
             if c_contants.hold:
                 holdK = curWepone.hold
-            moveSum = int(round(basic[i] * curWepone.k * holdK, 2))
+            postureK = curWepone.posture_states[c_contants.posture]
+            moveSum = int(round(basic[i] * curWepone.k * holdK * postureK, 2))
             while True:
-                if(moveSum > 10):
+                if moveSum > 10:
                     pydirectinput.move(xOffset=0, yOffset=10, relative=True)
                     moveSum -= 10
-                elif(moveSum > 0):
+                elif moveSum > 0:
                     pydirectinput.move(xOffset=0, yOffset=moveSum, relative=True)
                     moveSum = 0
                 elapsed = (round(time.perf_counter(), 3) * 1000 - startTime)
                 if not canFire() or elapsed > (i+1)*speed + 10:
+                    if moveSum > 0:
+                        pydirectinput.move(xOffset=0, yOffset=moveSum, relative=True)
                     break
                 time.sleep(0.01)
     else:

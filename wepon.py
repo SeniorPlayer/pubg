@@ -36,7 +36,6 @@ class c_wepone():
                 if grip != 'none' and grip != '':
                     self.k *= gun_data['grip'][grip]
                 if 'butt' in gun_data.keys() and butt in gun_data['butt'].keys() and butt != 'none' and muzzle != '':
-                    print("1111")
                     self.k *= gun_data['butt'][butt]
             except Exception as e:
                 print(type(e), '::', e)

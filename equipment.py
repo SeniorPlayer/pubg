@@ -95,9 +95,16 @@ def isBagOpen():
         return True
     return False
 
-def posture():
+#检测姿势
+def checkPosture():
+    c_equipment.checkPostureFlag = True
     #姿势946, 1320, 42, 46
     screen = shotCut(946, 1320, 42, 46)
+    name = compareAndGetName(screen, "./resource/posture/")
+    map = {"none": 0, "squat": 1, "down": 2}
+    c_contants.posture = map[name]
+    print("postureName: " + name)
+    c_equipment.checkPostureFlag = False
 
 def check():
     time.sleep(0.01)
@@ -146,8 +153,10 @@ def calculate_ssim(img1, img2):
 
 # 装备栏
 class c_equipment():
-    #是否打开装备栏
+    #是否打开装备栏 防重
     checkFlag = False
+    #检测姿势，防重
+    checkPostureFlag = False
     #装备1
     wepone1 = c_wepone('none', '', '', '', '')
     #装备2

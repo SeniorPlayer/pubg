@@ -1,6 +1,6 @@
 import pynput.keyboard as keyboard
 from pynput import mouse
-from equipment import c_equipment,check
+from equipment import c_equipment,check,checkPosture
 from mouse import *
 from contants import  c_contants
 
@@ -17,6 +17,11 @@ def asyncHandle():
         return
     c_contants.pool.submit(check)
 
+def asyncHandlePosture():
+    if c_equipment.checkPostureFlag:
+        return
+    c_contants.pool.submit(checkPosture)
+
 # 键盘点击事件
 def onRelease(key):
     try:
@@ -30,6 +35,8 @@ def onRelease(key):
             c_equipment.switch = 3
         elif '5' == key.char:#手雷
             c_equipment.switch = 3
+        elif 'c' == key.char or 'z' == key.char:
+            asyncHandlePosture()
         #print("key char" + str(key.char))
     except AttributeError:
         if 'tab' == key.name:
@@ -40,6 +47,8 @@ def onRelease(key):
             changeOpen()
         elif 'shift' == key.name:
             c_contants.hold = False
+        elif 'space' == key.name:
+            asyncHandlePosture()
         #print("key name" + str(key.name))
 
 def onPressed(key):

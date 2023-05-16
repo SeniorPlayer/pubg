@@ -4,8 +4,12 @@ from concurrent.futures import ThreadPoolExecutor
 class c_contants():
     # 程序退出标记
     exitFlag = False
+    #背包打开标记
     bagOpen = False
+    #屏息标记
     hold = False
+    #姿势 0默认 1下蹲 2趴下
+    posture = 0
     pool = ThreadPoolExecutor(max_workers=10)
     guns = {
         "none": {
@@ -136,8 +140,8 @@ class c_contants():
             # 姿势
             "posture": {
                 "default": 1,
-                "down": 0.58,
-                "squat": 0.83
+                "down": 0.55,
+                "squat": 0.80
             },
             # 倍镜
             "mirror": {
